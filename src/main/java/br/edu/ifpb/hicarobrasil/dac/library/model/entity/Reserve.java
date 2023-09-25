@@ -13,6 +13,9 @@ import lombok.*;
 @Entity
 @Table(name = "reserve")
 public class Reserve {
+    public Reserve() {
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;

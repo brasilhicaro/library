@@ -13,6 +13,7 @@ public class LibraryApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
 	}
+	
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
 	}

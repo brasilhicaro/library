@@ -10,6 +10,9 @@ import lombok.*;
 @Entity
 @Table(name = "book")
 public class Book {
+    
+    public Book() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
