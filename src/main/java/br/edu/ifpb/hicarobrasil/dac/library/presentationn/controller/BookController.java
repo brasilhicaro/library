@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import br.edu.ifpb.hicarobrasil.dac.library.business.dto.BookDTO;
 import br.edu.ifpb.hicarobrasil.dac.library.business.services.BookService;
 
-import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/book")
@@ -22,7 +20,7 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookDTO> save(BookDTO bookDTO){
+    public ResponseEntity<BookDTO> save(@RequestBody BookDTO bookDTO){
         try {
             BookDTO book =  bookService.save(bookDTO);
             return new ResponseEntity<>(book, HttpStatus.CREATED);
@@ -31,7 +29,7 @@ public class BookController {
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<BookDTO> update(BookDTO bookDTO, @PathVariable long id){
+    public ResponseEntity<BookDTO> update(@RequestBody BookDTO bookDTO, @PathVariable long id){
         try {
             BookDTO book =  bookService.update(bookDTO, id);
             return new ResponseEntity<>(book, HttpStatus.OK);
@@ -40,7 +38,7 @@ public class BookController {
         }
     }
     @DeleteMapping
-    public ResponseEntity<BookDTO> delete(BookDTO bookDTO){
+    public ResponseEntity<BookDTO> delete(@RequestBody BookDTO bookDTO){
         try {
             BookDTO book =  bookService.delete(bookDTO);
             return new ResponseEntity<>(book, HttpStatus.OK);
