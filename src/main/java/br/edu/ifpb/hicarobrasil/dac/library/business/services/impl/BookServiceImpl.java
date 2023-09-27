@@ -17,14 +17,15 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private ConvertService convertService;
+    @Autowired
     private BookRepository bookRepository;
 
     @Override
     public BookDTO save(BookDTO bookDTO) {
         Book book = convertService.convertToBook(bookDTO);
         BookDTO resultBook = convertService.convertToBookDTO(book);
+        bookRepository.save(book);
         return resultBook;
-
     }
 
     @Override

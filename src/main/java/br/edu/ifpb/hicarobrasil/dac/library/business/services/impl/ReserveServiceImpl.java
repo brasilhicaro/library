@@ -16,6 +16,7 @@ public class ReserveServiceImpl implements ReserveService{
 
     @Autowired
     private ReserveRepository reserveRepository;
+    @Autowired
     private ConvertService convertService;
     @Override
     public ReserveDTO save(ReserveDTO reserveDTO) {

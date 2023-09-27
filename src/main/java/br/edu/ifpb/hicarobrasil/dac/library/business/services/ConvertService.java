@@ -22,7 +22,7 @@ public class ConvertService {
         return book;
     }
     public BookDTO convertToBookDTO(Book book) {
-        BookDTO bookDTO = new BookDTO(book.getTitle(), book.getYear(), book.getPublisher(), book.getAuthor());
+        BookDTO bookDTO = new BookDTO(book.getTitle(), book.getAuthor(), book.getYear(), book.getPublisher());
         return bookDTO;
     }
     public Reserve convertToReserve(ReserveDTO reserveDTO) {
