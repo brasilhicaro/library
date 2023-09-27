@@ -22,7 +22,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDTO save(BookDTO bookDTO) {
         Book book = convertService.convertToBook(bookDTO);
-        return convertService.convertToBookDTO(bookRepository.save(book));
+        BookDTO resultBook = convertService.convertToBookDTO(book);
+        return resultBook;
+
     }
 
     @Override
@@ -32,7 +34,8 @@ public class BookServiceImpl implements BookService {
         book.setTitle(bookDTO.title());
         book.setPublisher(bookDTO.publisher());
         book.setYear(bookDTO.year());
-        return convertService.convertToBookDTO(bookRepository.save(book));
+        BookDTO resultBook = convertService.convertToBookDTO(bookRepository.save(book));
+        return resultBook;
        
     }
 
@@ -45,20 +48,26 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDTO deleteById(Long id) {
         Book book = bookRepository.findById(id).get();
+        BookDTO bookDTO = convertService.convertToBookDTO(book);
         bookRepository.deleteById(id);
-        return convertService.convertToBookDTO(book);
+        return bookDTO;
     }
 
     @Override
     public BookDTO findByID(Long id) {
         Book book = bookRepository.findById(id).get();
-        return convertService.convertToBookDTO(book);
+        BookDTO findBook = convertService.convertToBookDTO(book);
+        return findBook;
     }
 
     @Override
     public List<BookDTO> list() {
         List<Book> books = bookRepository.findAll();
-        return convertService.convertToBookDTOList(books);
+        List<BookDTO> bookDTOs=convertService.convertToBookDTOList(books);
+        for (BookDTO bookDTO : bookDTOs) {
+            System.out.println(bookDTO.toString());
+        }
+        return bookDTOs;
     }
     
 }
