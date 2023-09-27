@@ -78,7 +78,7 @@ public class ReserveController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReserveDTO> findByID(@PathVariable Long id){
+    public ResponseEntity<ReserveDTO> get(@PathVariable Long id){
         try {
             ReserveDTO reserve = reserveService.findByID(id);
             return new ResponseEntity<>(reserve, HttpStatus.OK);

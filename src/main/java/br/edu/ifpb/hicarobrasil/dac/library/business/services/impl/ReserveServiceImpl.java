@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.hicarobrasil.dac.library.business.dto.BookDTO;
 import br.edu.ifpb.hicarobrasil.dac.library.business.dto.ReserveDTO;
 import br.edu.ifpb.hicarobrasil.dac.library.business.services.ConvertService;
 import br.edu.ifpb.hicarobrasil.dac.library.business.services.ReserveService;

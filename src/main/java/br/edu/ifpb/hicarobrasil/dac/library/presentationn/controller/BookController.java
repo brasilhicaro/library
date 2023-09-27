@@ -56,7 +56,7 @@ public class BookController {
         }
     }
     @GetMapping("/{id}")
-    public ResponseEntity<BookDTO> getMethodName(@PathVariable long id) {
+    public ResponseEntity<BookDTO> get(@PathVariable long id) {
         try {
             BookDTO book = bookService.findByID(id);
             return new ResponseEntity<>(book, HttpStatus.OK);
@@ -64,7 +64,7 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/list")
+    @GetMapping("/books")
     public ResponseEntity<List<BookDTO>> list() {
         try {
             List<BookDTO> books = bookService.list();
