@@ -52,7 +52,7 @@ public class ReserveServiceImpl implements ReserveService{
     @Override
     public ReserveDTO findByID(Long id) {
         Reserve reserve = reserveRepository.findById(id).get();
-        return new ReserveDTO(reserve.getName(), reserve.getLoan(), reserve.getDevolution(), reserve.getBookID());
+        return convertService.convertToReserveDTO(reserve);
     }
 
     @Override

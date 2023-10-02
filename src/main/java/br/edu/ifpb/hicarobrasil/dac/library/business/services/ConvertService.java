@@ -22,7 +22,7 @@ public class ConvertService {
         return book;
     }
     public BookDTO convertToBookDTO(Book book) {
-        BookDTO bookDTO = new BookDTO(book.getTitle(), book.getAuthor(), book.getYear(), book.getPublisher());
+        BookDTO bookDTO = new BookDTO(book.getId(),book.getTitle(), book.getAuthor(), book.getYear(), book.getPublisher());
         return bookDTO;
     }
     public Reserve convertToReserve(ReserveDTO reserveDTO) {
@@ -35,7 +35,7 @@ public class ConvertService {
         return reserve;
     }
     public ReserveDTO convertToReserveDTO(Reserve reserve) {
-        ReserveDTO reserveDTO = new ReserveDTO(reserve.getName(), reserve.getLoan(), reserve.getDevolution(), reserve.getBookID());
+        ReserveDTO reserveDTO = new ReserveDTO(reserve.getId(), reserve.getName(), reserve.getLoan(), reserve.getDevolution(), reserve.getBookID());
         return reserveDTO;
     }
     public List<ReserveDTO> convertToReserveDTOList(List<Reserve> reserves) {
