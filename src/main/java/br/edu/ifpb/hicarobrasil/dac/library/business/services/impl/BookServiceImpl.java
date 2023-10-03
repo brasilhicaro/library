@@ -1,5 +1,6 @@
 package br.edu.ifpb.hicarobrasil.dac.library.business.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,18 @@ public class BookServiceImpl implements BookService {
         BookDTO resultBook = convertService.convertToBookDTO(book);
         bookRepository.save(book);
         return resultBook;
+    }
+    @Override
+    public List<BookDTO> findByTitle(String title) {
+        List<Book> book = bookRepository.findAll();
+        List<BookDTO> bookDTOs= new ArrayList<>();
+        for (Book book2 : book) {
+            if(book2.getTitle().equals(title)) {
+                BookDTO bookDTO = convertService.convertToBookDTO(book2);
+                bookDTOs.add(bookDTO);
+            }
+        }
+        return bookDTOs;
     }
 
     @Override

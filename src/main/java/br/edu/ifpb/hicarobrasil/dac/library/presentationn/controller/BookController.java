@@ -28,6 +28,26 @@ public class BookController {
            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping("/search/{title}")
+    public ResponseEntity<List<BookDTO>> search(@PathVariable String title) {
+        try {
+            List<BookDTO> books = bookService.findByTitle(title);
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @GetMapping("/find/{id}")
+    public ResponseEntity<BookDTO> findByID(@PathVariable long id) {
+        try {
+            BookDTO book = bookService.findByID(id);
+            return new ResponseEntity<>(book, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<BookDTO> update(@RequestBody BookDTO bookDTO, @PathVariable long id){
         try {
