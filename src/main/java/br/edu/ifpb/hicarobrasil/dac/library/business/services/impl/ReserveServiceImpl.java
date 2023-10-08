@@ -28,7 +28,7 @@ public class ReserveServiceImpl implements ReserveService{
     @Override
     public ReserveDTO update(ReserveDTO reserveDTO, Long id) {
         Reserve reserve = reserveRepository.findById(id).get();
-        reserve.setName(reserveDTO.name());
+        reserve.setResponsible(reserveDTO.responsible());
         reserve.setLoan(reserveDTO.loan());
         reserve.setDevolution(reserveDTO.devolution());
         reserve.setBookID(reserveDTO.bookID());

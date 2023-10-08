@@ -27,7 +27,7 @@ public class ConvertService {
     }
     public Reserve convertToReserve(ReserveDTO reserveDTO) {
         Reserve reserve = new Reserve();
-        reserve.setName(reserveDTO.name());
+        reserve.setResponsible(reserveDTO.responsible());
         reserve.setLoan(reserveDTO.loan());
         reserve.setDevolution(reserveDTO.devolution());
         reserve.setBookID(reserveDTO.bookID());
@@ -35,7 +35,7 @@ public class ConvertService {
         return reserve;
     }
     public ReserveDTO convertToReserveDTO(Reserve reserve) {
-        ReserveDTO reserveDTO = new ReserveDTO(reserve.getId(), reserve.getName(), reserve.getLoan(), reserve.getDevolution(), reserve.getBookID());
+        ReserveDTO reserveDTO = new ReserveDTO(reserve.getId(), reserve.getResponsible(), reserve.getLoan(), reserve.getDevolution(), reserve.getBookID());
         return reserveDTO;
     }
     public List<ReserveDTO> convertToReserveDTOList(List<Reserve> reserves) {

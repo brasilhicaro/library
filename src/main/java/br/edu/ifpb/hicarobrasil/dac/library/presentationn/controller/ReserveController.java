@@ -32,7 +32,7 @@ public class ReserveController {
     public ResponseEntity<ReserveDTO> save(@RequestBody ReserveDTO reserveDTO){
         try {
             ReserveDTO reserve = reserveService.save(reserveDTO);
-            return new ResponseEntity<>(reserve, HttpStatus.CREATED);
+            return new ResponseEntity<>(reserve, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

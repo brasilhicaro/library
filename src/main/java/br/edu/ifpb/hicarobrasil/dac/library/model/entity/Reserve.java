@@ -19,8 +19,8 @@ public class Reserve {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "responsible")
+    private String responsible;
     @Column(name = "loan")
     private Date loan;
     @Column(name = "devolution")
