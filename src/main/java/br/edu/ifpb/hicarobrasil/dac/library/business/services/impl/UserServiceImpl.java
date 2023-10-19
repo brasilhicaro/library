@@ -61,5 +61,10 @@ public class UserServiceImpl implements UserService, UserDetailsService{
             throw new UsernameNotFoundException("User not found");
         }
     }
+
+    @Override
+    public UserDTO findByLogin(String login) {
+        return convertService.convertToUserDTO(userRepository.findByUsername(login));
+    }
     
 }

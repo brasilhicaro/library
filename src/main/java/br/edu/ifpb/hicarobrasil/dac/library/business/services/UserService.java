@@ -13,5 +13,6 @@ public interface UserService {
     public UserDTO delete(UserDTO userDTO);
     public List<UserDTO> list();
     public UserDTO findByID(String id);
+    public UserDTO findByLogin(String login);
 
 }
