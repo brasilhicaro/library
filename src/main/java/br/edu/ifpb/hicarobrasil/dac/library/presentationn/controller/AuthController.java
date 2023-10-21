@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("auth")
 @CrossOrigin(origins = "http://localhost:3000")
-public class UserController {
+public class AuthController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -39,13 +39,17 @@ public class UserController {
 
     @RequestMapping("/cadastrar")
     @PostMapping
-    public ResponseEntity<LoginDTO> cadastraResponseEntity(@RequestBody @Valid UserDTO userDTO){
+    public ResponseEntity<UserDTO> cadastraResponseEntity(@RequestBody @Valid UserDTO userDTO){
         if(userService.findByLogin(userDTO.login())!= null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         String encryptedPassword = new BCryptPasswordEncoder().encode(userDTO.password());    
         UserDTO cryptUserDTO = new UserDTO(userDTO.id(),userDTO.name(), userDTO.email() ,userDTO.login(), encryptedPassword, userDTO.role());
-        userService.create(cryptUserDTO);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try{
+            UserDTO user = userService.create(cryptUserDTO);
+            return new ResponseEntity<>(user, HttpStatus.CREATED);
+        }catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     } 
 
     @RequestMapping("/login")
