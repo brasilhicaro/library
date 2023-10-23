@@ -31,12 +31,13 @@ public class User implements UserDetails{
     private String login;
     @Column(name = "password", nullable = false)
     private String senha;
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRoleEnum role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.role.equals("admin")) {
+        if (this.role.equals("ADMIN")) {
             return List.of( new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         } else  {
             return List.of( new SimpleGrantedAuthority("ROLE_USER"));
@@ -64,7 +65,6 @@ public class User implements UserDetails{
     }
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEnabled'");
+    return true;
     }
 }

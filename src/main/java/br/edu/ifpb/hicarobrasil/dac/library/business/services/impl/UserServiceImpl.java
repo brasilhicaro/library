@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
-            User user = userRepository.findByUsername(username);
+            UserDetails user = userRepository.findByUsername(username);
             return user;
         } catch (Exception e) {
             throw new UsernameNotFoundException("User not found");
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     public UserDTO findByLogin(String login) {
-        return convertService.convertToUserDTO(userRepository.findByUsername(login));
+        return convertService.convertToUserDTO((User)userRepository.findByUsername(login));
     }
     
 }

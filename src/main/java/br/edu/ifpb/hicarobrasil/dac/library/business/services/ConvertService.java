@@ -11,7 +11,6 @@ import br.edu.ifpb.hicarobrasil.dac.library.business.dto.UserDTO;
 import br.edu.ifpb.hicarobrasil.dac.library.model.entity.Book;
 import br.edu.ifpb.hicarobrasil.dac.library.model.entity.Reserve;
 import br.edu.ifpb.hicarobrasil.dac.library.model.entity.User;
-import br.edu.ifpb.hicarobrasil.dac.library.model.entity.UserRoleEnum;
 
 @Service
 public class ConvertService {
